@@ -1,30 +1,27 @@
 import { makeStyles } from '@material-ui/core'
 import clsx from 'clsx'
+import { DetailedHTMLProps, forwardRef, HTMLAttributes } from 'react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.only('xs')]: {
-      margin: '30px'
+      padding: '30px',
     },
     [theme.breakpoints.only('sm')]: {
-      margin: '50px'
+      padding: '50px',
     },
-    margin: '95px'
-  }
+    padding: '95px',
+  },
 }))
 
-interface PageSpacerProps {
-  children?: JSX.Element | JSX.Element[]
+interface PageSpacerProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  children: JSX.Element | JSX.Element[]
   className?: string
 }
 
-function PageSpacer({ children, className, ...props }: PageSpacerProps) {
+const PageSpacer = forwardRef<HTMLDivElement, PageSpacerProps>(({ className, ...props }, ref) => {
   const classes = useStyles()
-  return (
-    <div className={clsx(className, classes.root)} {...props}>
-      {children}
-    </div>
-  )
-}
+  return <div ref={ref} className={clsx(className, classes.root)} {...props} />
+})
 
 export default PageSpacer

@@ -2,13 +2,7 @@ import { CardProps } from 'components/Card'
 
 export default [
   {
-    title: (
-      <div>
-        AXON
-        <br />
-        Networks
-      </div>
-    ),
+    title: <div>AXON Networks</div>,
     description:
       'axon-networks.com is the homepage of AXON-Networks. axon-networks.com is a responsive React based website, served by NGINX. It features optimizations such as code-splitting and lazy-loading images.',
     imageAlt: 'AXON Networks',
@@ -16,27 +10,21 @@ export default [
     cardProps: {
       sx: {
         backgroundColor: '#0470D7',
-        color: '#FFFFFF'
-      }
-    }
+        color: '#FFFFFF',
+      },
+    },
   },
   {
-    title: (
-      <div>
-        AXON
-        <br />
-        Orchestrator
-      </div>
-    ),
+    title: <div>AXON Orchestrator</div>,
     description:
       'AXON Orchestrator is a scalable insights generating platform. It allows generation of alarms, mitigations and other health metrics along with advanced insights into the status of a client network. It provides the ability to analyze network health at a previous point in time.',
     imageAlt: 'AXON Orchestrator',
     imageSrc: '/image/AXON-Orchestrator.webp',
     cardProps: {
       sx: {
-        backgroundColor: '#FEE213'
-      }
-    }
+        backgroundColor: '#FEE213',
+      },
+    },
   },
   {
     title: (
@@ -53,9 +41,9 @@ export default [
     cardProps: {
       sx: {
         backgroundColor: '#003157',
-        color: '#FFFFFF'
-      }
-    }
+        color: '#FFFFFF',
+      },
+    },
   },
   {
     title: 'GreenWave Systems',
@@ -65,9 +53,9 @@ export default [
     imageSrc: '/image/GreenWaveSystems.webp',
     cardProps: {
       sx: {
-        backgroundColor: '#7FE776'
-      }
-    }
+        backgroundColor: '#7FE776',
+      },
+    },
   },
   {
     title: 'Coredump Utility',
@@ -77,9 +65,9 @@ export default [
     imageSrc: '/image/Coredump.webp',
     cardProps: {
       sx: {
-        backgroundColor: '#DFDFDF'
-      }
-    }
+        backgroundColor: '#DFDFDF',
+      },
+    },
   },
   {
     title: 'Sync-UI',
@@ -90,8 +78,8 @@ export default [
     cardProps: {
       sx: {
         backgroundColor: '#00B7AD',
-        color: '#FFFFFF'
-      }
-    }
-  }
+        color: '#FFFFFF',
+      },
+    },
+  },
 ] as CardProps[]
