@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
-import { CssBaseline, ThemeProvider } from '@material-ui/core'
+import { CssBaseline, ThemeProvider, useMediaQuery } from '@material-ui/core'
 import Head from 'next/head'
 import theme from '../theme'
 
-export default function MyApp(props) {
+function App(props) {
   const { Component, pageProps } = props
 
   useEffect(() => {
@@ -29,3 +29,5 @@ export default function MyApp(props) {
     </>
   )
 }
+
+export default App

@@ -4,13 +4,13 @@ import clsx from 'clsx'
 const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.only('xs')]: {
-      padding: '30px',
+      margin: '30px'
     },
     [theme.breakpoints.only('sm')]: {
-      padding: '50px',
+      margin: '50px'
     },
-    padding: '100px',
-  },
+    margin: '95px'
+  }
 }))
 
 interface PageSpacerProps {

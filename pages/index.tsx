@@ -1,15 +1,24 @@
 import Head from 'next/head'
 import PageSpacer from 'components/PageSpacer'
-import { Button, Grid, makeStyles, useMediaQuery, useTheme } from '@material-ui/core'
-import clsx from 'clsx'
+import {
+  Button,
+  Grid,
+  makeStyles,
+  Typography,
+  useMediaQuery,
+  useTheme
+} from '@material-ui/core'
+import Card from 'components/Card'
+import projects from 'projects'
 
 function Home() {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>dmulvad.com</title>
       </Head>
       <Splash />
+      <Projects />
     </>
   )
 }
@@ -17,55 +26,40 @@ function Home() {
 const useSplashStyles = makeStyles((theme) => ({
   container: {
     [theme.breakpoints.only('xs')]: {
-      minHeight: 'calc(100vh - 60px)',
+      minHeight: 'calc(100vh - 60px)'
     },
     [theme.breakpoints.only('sm')]: {
-      minHeight: 'calc(100vh - 100px)',
+      minHeight: 'calc(100vh - 100px)'
     },
-    minHeight: 'calc(100vh - 200px)',
+    minHeight: 'calc(100vh - 190px)'
   },
   dude: {
     [theme.breakpoints.only('xs')]: {
-      maxHeight: 'calc(75vh - 60px)',
+      maxHeight: 'calc(75vh - 60px)'
     },
     [theme.breakpoints.only('sm')]: {
-      maxHeight: 'calc(75vh - 100px)',
+      maxHeight: 'calc(75vh - 100px)'
     },
-    maxHeight: 'calc(100vh - 210px)',
-    width: '100%',
-  },
-  myNameIs: {
-    fontVariant: 'light',
-    fontSize: '25px',
-    lineHeight: '27px',
-  },
-  name: {
-    fontWeight: 700,
-    fontSize: '60px',
-    lineHeight: '71.5px',
-  },
-  title: {
-    fontWeight: 300,
-    fontSize: '50px',
-    lineHeight: '58.9px',
+    maxHeight: 'calc(100vh - 200px)',
+    width: '100%'
   },
   svg: {
-    verticalAlign: 'middle',
+    verticalAlign: 'middle'
   },
   spacerBottom: {
     [theme.breakpoints.down('md')]: {
-      marginBottom: '20px',
+      marginBottom: '20px'
     },
-    marginBottom: '30px',
+    marginBottom: '30px'
   },
   spacerLeft: {
-    marginLeft: '30px',
+    marginLeft: '30px'
   },
   top: {
     [theme.breakpoints.down('md')]: {
-      marginBottom: '30px',
-    },
-  },
+      marginBottom: '30px'
+    }
+  }
 }))
 
 function Splash() {
@@ -74,24 +68,31 @@ function Splash() {
   const xs = useMediaQuery(theme.breakpoints.only('xs'))
   return (
     <PageSpacer>
-      <Grid container className={classes.container} alignItems={xs ? 'flex-start' : 'center'}>
+      <Grid
+        container
+        className={classes.container}
+        alignItems={xs ? 'flex-start' : 'center'}>
         <Grid item xs={12} sm={12} md className={classes.top}>
           <Grid container direction='column'>
-            <Grid item className={clsx(classes.myNameIs, classes.spacerBottom)}>
-              Hi, my name is
+            <Grid item className={classes.spacerBottom}>
+              <Typography variant='h6'>Hi, my name is</Typography>
             </Grid>
             <Grid item className={classes.spacerBottom}>
-              <div className={classes.name}>Daniel Mulvad.</div>
-              <div className={classes.title}>
+              <Typography variant='h1'>Daniel Mulvad.</Typography>
+              <Typography variant='h2'>
                 <div>Software Engineer at</div>
                 <div>AXON Networks</div>
-              </div>
+              </Typography>
             </Grid>
             <Grid item className={classes.spacerBottom}>
-              As a software engineer, I strive to ensure efficient, production-ready code by following proven reusable
-              design patterns. I am very passionate about the future of the web and the technologies that drive it. I've
-              had the opportunity to work on a wide variety of systems including full-stack apps/websites, motion
-              sensors, and home Wi-Fi routers.
+              <Typography variant='body1'>
+                As a software engineer, I strive to ensure efficient,
+                production-ready code by following proven reusable design
+                patterns. I am very passionate about the future of the web and
+                the technologies that drive it. I've had the opportunity to work
+                on a wide variety of systems including full-stack apps/websites,
+                motion sensors, and home Wi-Fi routers.
+              </Typography>
             </Grid>
             <Grid item className={classes.spacerBottom}>
               <Grid container spacing={3}>
@@ -106,18 +107,49 @@ function Splash() {
             <Grid item>
               <Grid container>
                 <Grid item>
-                  <img className={classes.svg} alt='GitHub' width='30' height='30' src='/svg/github.svg' />
+                  <img
+                    className={classes.svg}
+                    alt='GitHub'
+                    width='30'
+                    height='30'
+                    src='/svg/github.svg'
+                  />
                 </Grid>
                 <Grid item className={classes.spacerLeft}>
-                  <img className={classes.svg} alt='LinkedIn' width='30' height='30' src='/svg/linkedin.svg' />
+                  <img
+                    className={classes.svg}
+                    alt='LinkedIn'
+                    width='30'
+                    height='30'
+                    src='/svg/linkedin.svg'
+                  />
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12} sm={12} md>
-          <img src='/svg/dude.svg' width='100%' height='auto' className={classes.dude} />
+          <img
+            src='/svg/dude.svg'
+            width='100%'
+            height='auto'
+            className={classes.dude}
+          />
         </Grid>
+      </Grid>
+    </PageSpacer>
+  )
+}
+
+function Projects() {
+  return (
+    <PageSpacer>
+      <Grid container spacing={6}>
+        {projects.map((project, pi) => (
+          <Grid item xs={12} md={6} key={`${project.title}-${pi}`}>
+            <Card {...project} />
+          </Grid>
+        ))}
       </Grid>
     </PageSpacer>
   )
