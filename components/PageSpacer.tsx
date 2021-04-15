@@ -4,24 +4,26 @@ import { DetailedHTMLProps, forwardRef, HTMLAttributes } from 'react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.only('xs')]: {
-      padding: '30px',
+    [theme.breakpoints.down('md')]: {
+      padding: '60px'
     },
-    [theme.breakpoints.only('sm')]: {
-      padding: '50px',
-    },
-    padding: '95px',
-  },
+    padding: '95px 95px'
+  }
 }))
 
-interface PageSpacerProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface PageSpacerProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   children: JSX.Element | JSX.Element[]
   className?: string
 }
 
-const PageSpacer = forwardRef<HTMLDivElement, PageSpacerProps>(({ className, ...props }, ref) => {
-  const classes = useStyles()
-  return <div ref={ref} className={clsx(className, classes.root)} {...props} />
-})
+const PageSpacer = forwardRef<HTMLDivElement, PageSpacerProps>(
+  ({ className, ...props }, ref) => {
+    const classes = useStyles()
+    return (
+      <div ref={ref} className={clsx(className, classes.root)} {...props} />
+    )
+  }
+)
 
 export default PageSpacer
