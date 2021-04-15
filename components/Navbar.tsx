@@ -51,7 +51,7 @@ function Navbar() {
           component='img'
           className={classes.img}
           src='/svg/logo.svg'
-          alt='Daniel Mulvad'
+          alt='Daniel Mulvad Logo'
           onClick={() =>
             window.scrollTo({
               left: 0,

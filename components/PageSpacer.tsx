@@ -8,6 +8,15 @@ const useStyles = makeStyles((theme) => ({
       padding: '60px'
     },
     padding: '95px 95px'
+  },
+  maxHeight: {
+    [theme.breakpoints.only('sm')]: {
+      minHeight: 'calc(100vh - 60px)'
+    },
+    [theme.breakpoints.only('xs')]: {
+      minHeight: 'calc(100vh - 30px)'
+    },
+    minHeight: 'calc(100vh - 95px)'
   }
 }))
 
@@ -15,13 +24,20 @@ interface PageSpacerProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   children: JSX.Element | JSX.Element[]
   className?: string
+  maxHeight?: boolean
 }
 
 const PageSpacer = forwardRef<HTMLDivElement, PageSpacerProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, maxHeight = true, ...props }, ref) => {
     const classes = useStyles()
     return (
-      <div ref={ref} className={clsx(className, classes.root)} {...props} />
+      <div
+        ref={ref}
+        className={clsx(className, classes.root, {
+          [classes.maxHeight]: maxHeight
+        })}
+        {...props}
+      />
     )
   }
 )

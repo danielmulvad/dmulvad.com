@@ -160,6 +160,7 @@ function Splash() {
         </Grid>
         <Grid item xs={12} sm={12} md>
           <img
+            alt='Daniel Mulvad'
             src='/svg/dude.svg'
             width='100%'
             height='auto'
@@ -173,7 +174,7 @@ function Splash() {
 
 const Projects = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <PageSpacer id='section-projects' ref={ref} {...props}>
+    <PageSpacer id='section-projects' ref={ref} maxHeight {...props}>
       <Grid container spacing={6}>
         {projects.map((project, pi) => (
           <Grid item xs={12} md={6} key={`${project.title}-${pi}`}>
