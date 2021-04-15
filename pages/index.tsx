@@ -129,7 +129,8 @@ function Splash() {
                   item
                   component='a'
                   href='https://github.com/danielmulvad'
-                  target='_blank'>
+                  target='_blank'
+                  rel='noreferrer noopener'>
                   <img
                     className={classes.svg}
                     alt='GitHub'
@@ -143,7 +144,8 @@ function Splash() {
                   className={classes.spacerLeft}
                   component='a'
                   href='https://www.linkedin.com/in/dhm'
-                  target='_blank'>
+                  target='_blank'
+                  rel='noreferrer noopener'>
                   <img
                     className={classes.svg}
                     alt='LinkedIn'
