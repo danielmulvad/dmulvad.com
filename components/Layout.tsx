@@ -1,14 +1,20 @@
 import Head from 'next/head'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
-import Navbar from './Navbar'
+import Navbar, { NavbarProps } from './Navbar'
 
-function Layout(props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) {
+interface LayoutProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+  navbar?: boolean
+  navbarProps?: NavbarProps
+}
+
+function Layout({ navbar = true, navbarProps, ...props }: LayoutProps) {
   return (
     <>
       <Head>
-        <title>dmulvad.com</title>
+        <title>dmulvad.com - Daniel Mulvad</title>
       </Head>
-      <Navbar />
+      {navbar && <Navbar {...navbarProps} />}
       <main {...props} />
     </>
   )
