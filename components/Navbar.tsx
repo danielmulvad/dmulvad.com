@@ -1,4 +1,6 @@
+import { useRouter } from 'next/router'
 import { Grid, makeStyles } from '@material-ui/core'
+import clsx from 'clsx'
 
 const useNavbarStyles = makeStyles((theme) => ({
   root: {
@@ -11,10 +13,12 @@ const useNavbarStyles = makeStyles((theme) => ({
     height: '95px',
     margin: '0 95px',
     padding: '1rem 0',
-    position: 'fixed',
     top: 0,
     left: 0,
     zIndex: theme.zIndex.appBar
+  },
+  fixed: {
+    position: 'fixed'
   },
   img: {
     cursor: 'pointer',
@@ -27,22 +31,30 @@ const useNavbarStyles = makeStyles((theme) => ({
     verticalAlign: 'middle'
   },
   spacer: {
-    [theme.breakpoints.only('sm')]: {
+    [theme.breakpoints.down('md')]: {
       height: '60px'
-    },
-    [theme.breakpoints.only('xs')]: {
-      height: '30px'
     },
     height: '95px'
   }
 }))
 
-function Navbar() {
+export interface NavbarProps {
+  fixed?: boolean
+  redirectHome?: boolean
+}
+
+function Navbar({ fixed = true, redirectHome }: NavbarProps) {
   const classes = useNavbarStyles()
+  const router = useRouter()
+
+  function navigateHome() {
+    router.push('/')
+  }
+
   return (
     <>
       <Grid
-        className={classes.root}
+        className={clsx(classes.root, { [classes.fixed]: fixed })}
         container
         alignItems='center'
         justifyContent='space-between'>
@@ -52,16 +64,19 @@ function Navbar() {
           className={classes.img}
           src='/svg/logo.svg'
           alt='Daniel Mulvad Logo'
-          onClick={() =>
-            window.scrollTo({
-              left: 0,
-              top: 0,
-              behavior: 'smooth'
-            })
+          onClick={
+            redirectHome
+              ? navigateHome
+              : () =>
+                  window.scrollTo({
+                    left: 0,
+                    top: 0,
+                    behavior: 'smooth'
+                  })
           }></Grid>
         <Grid item>1</Grid>
       </Grid>
-      <div className={classes.spacer} />
+      {fixed && <div className={classes.spacer} />}
     </>
   )
 }
